@@ -1,0 +1,30 @@
+@use "sass:math";
+
+$grid-columns: 12;
+$grid-gutter-width: 1.5rem;
+
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1140px,
+	xxl: 1320px
+);
+
+@mixin container($max-width) {
+	width: 100%;
+	max-width: $max-width;
+	margin: 0 auto;
+	padding: 0 $padding;
+	box-sizing: border-box;
+}
+
+.container {
+	@include container(none);
+}
+
+@each $key, $val in $container-max-widths {
+	.container-#{$key} {
+		@include container($val);
+	}
+}

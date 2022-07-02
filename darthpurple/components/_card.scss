@@ -1,0 +1,23 @@
+.card {
+  display: block;
+  padding: $padding;
+  border: $border-thickness solid $light;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+
+  .card-title {
+    font-size: $font-size-lg;
+    padding-bottom: $padding;
+    font-weight: bold;
+    color: $dark;
+  }
+
+  .card-body {
+    font-size: $font-size;
+
+    a {
+      text-decoration: underline;
+      color: $primary;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@each $key, $val in $theme-colors {
+  .text-#{$key} {
+    color: $val;
+  }
+  .bg-#{$key} {
+    background-color: $val;
+  }
+}
+
+@each $key, $val in $all-colors {
+  .bg-#{$key} {
+    background-color: $val;
+  }
+
+  @for $i from 1 through 4 {
+    .bg-#{$key}-#{$i*100} {
+      background-color: mix($val, white, $i*20);
+    }
+
+    .bg-hover-#{$key}-#{$i*100} {
+      &:hover {
+        background-color: mix($val, white, $i*20);
+      }
+    }
+  }
+
+  @for $i from 1 through 4 {
+    .bg-#{$key}-#{$i*100+500} {
+      background-color: mix(black, $val, $i*20);
+    }
+
+    .bg-hover-#{$key}-#{$i*100+500} {
+      &:hover {
+        background-color: mix(black, $val, $i*20);
+      }
+    }
+  }
+}

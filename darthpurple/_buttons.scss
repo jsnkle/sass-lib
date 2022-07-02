@@ -1,0 +1,21 @@
+@use "sass:color";
+
+@each $key, $val in $theme-colors {
+	.btn-#{$key} {
+		text-decoration: none;
+		cursor: pointer;
+		display: inline-block;
+		border: 0;
+		padding: $padding $padding*2;
+		border-radius: $border-radius;
+		background-color: $val;
+		@if color.lightness($val) > 60 or $val == $warning {
+			color: $dark;
+		} @else {
+			color: $light;
+		}
+		font-weight: 500;
+	}
+}
+
+@debug color.lightness($warning);
