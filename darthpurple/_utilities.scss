@@ -1,8 +1,19 @@
 @use "sass:math";
 
-$utilities: (
+$spacing: (
 	"padding": (
 		"prefix": "p",
+		"values": (
+			"0": 0,
+			"1": $spacer * .25,
+			"2": $spacer * .5,
+			"3": $spacer,
+			"4": $spacer * 1.5,
+			"5": $spacer * 3
+		)
+	),
+	"margin": (
+		"prefix": "m",
 		"values": (
 			"0": 0,
 			"1": $spacer * .25,
@@ -14,21 +25,52 @@ $utilities: (
 	)
 );
 
-@each $property, $map in $utilities{
+// base
+@each $property, $map in $spacing{
  	$prefix: map-get($map, "prefix");
  	$values: map-get($map, "values");
 
- 		//padding
  		@each $key, $val in $values {
-			#{$prefix}-#{$key} {
+			.#{$prefix}-#{$key} {
 	 		#{$property}: $val;
 		}
-
-		//padding top
-		@each $key, $val in $values {
-			#{$prefix}t-#{$key} {
-			#{$property}-top: $val;
-			}
-		}
  	}
+}
+
+//top
+@each $property, $map in $spacing {
+	$prefix: map-get($map, "prefix");
+	$values: map-get($map, "values");
+
+	@each $key, $val in $values {
+		.#{$prefix}t-#{$key} {
+			#{$property}-top: $val;
+		}
+	}
+}
+
+// x-axis
+@each $property, $map in $spacing {
+	$prefix: map-get($map, "prefix");
+	$values: map-get($map, "values");
+
+	@each $key, $val in $values {
+		.#{$prefix}x-#{$key} {
+			#{$property}-left: $val;
+			#{$property}-right: $val;
+		}
+	}
+}
+
+// y-axis
+@each $property, $map in $spacing {
+	$prefix: map-get($map, "prefix");
+	$values: map-get($map, "values");
+
+	@each $key, $val in $values {
+		.#{$prefix}y-#{$key} {
+			#{$property}-top: $val;
+			#{$property}-bottom: $val;
+		}
+	}
 }
